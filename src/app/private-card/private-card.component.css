@@ -1,0 +1,7 @@
+.pagination div:nth-child(1){
+    cursor: pointer;
+    background-color: rgb(211, 211, 211);
+}
+.coursor-none{
+    cursor: default !important;
+}

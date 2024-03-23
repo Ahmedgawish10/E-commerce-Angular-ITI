@@ -1,0 +1,8 @@
+.title-box{
+display: grid;
+grid-template-columns: repeat(4,1fr);
+}
+.cart-contnet{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}

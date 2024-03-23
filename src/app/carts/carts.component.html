@@ -1,0 +1,60 @@
+<p  class="text-danger text-center mt-5">{{cartEmpty}}</p>
+@if (!cartEmpty  ) {
+
+
+    <div class="title-box  border-bottom border-mutted  container">
+        <div class=" fs-6 fw-bold">description</div>
+        <div class="text-center fs-6 fw-bold">Quntnity</div>
+        <div class="text-center fs-6 fw-bold">Remove</div>
+        <div class="text-center fs-6 fw-bold">Price</div>
+       </div>
+}
+
+<div *ngFor="let item of arrProducts">
+<div class="container">
+     
+       <div class="cart-contnet p-2  gap-3 border-bottom border-mutted">
+          <div class="box1 d-flex align-items-center">
+            <div class="img-box ">
+                <img src={{item.images[0]}} alt="" width="80px" height="80px">
+            </div>
+            <div class="category ms-1">
+                <div>{{item.category}}</div>
+            </div>
+
+          </div>
+          <!-- 2 -->
+          <div class="numbder-cart mt-4 d-flex justify-content-center">
+            <nav aria-label="Page navigation example ">
+                <ul class="pagination">
+                  <li class="page-item"><div class="page-link">-</div></li>
+                  <li class="page-item"><div class="page-link coursor-none">1</div></li>
+                  <li class="page-item"><div class="page-link">+</div></li>
+                </ul>
+              
+              </nav>
+          </div>
+          <!-- 3 -->
+          <div class="box1 d-flex align-items-center justify-content-center"> 
+            <div class="category ms-2 border rounded pt-2 pb-2  ps-3 pe-3  "(click)="deleteSelecteProduct(item.id)">
+                x
+            </div>
+
+          </div>
+          <!-- 4 -->
+          <div class="box1 d-flex align-items-center justify-content-center"> 
+            <div class="category ms-2 ">
+                ${{item.price}}.00
+            </div>
+
+          </div>
+
+       </div>
+        
+
+
+</div>
+    
+
+
+</div>

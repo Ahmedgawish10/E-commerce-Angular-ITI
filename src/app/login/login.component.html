@@ -1,0 +1,56 @@
+<div class="container container-width mt-5 ">
+  <form #loginForm="ngForm" (submit)="handleLogin(loginForm)">
+    <div class="mb-3 ">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" ngModel
+        required minlength="12" maxlength="25" pattern="^[a-zA-Z0-9._%+-]+@(gmail|yahoo ?)+\.[a-zA-Z]{2,}$"
+        #emailRef="ngModel">
+      @if(emailRef.touched && emailRef.invalid){
+      <div id="emailHelp" class="form-text text-danger">
+        @if (emailRef.errors?.["required"]) {
+        <div>this vaild is required</div>
+        } @if(emailRef.errors?.["minlength"] ) {
+        <div> Email is short </div>
+        }@else if( emailRef.errors?.["pattern"]) {
+        <div>Plz! Enter Valid Email</div>
+        }
+      </div>
+      }
+    </div>
+    <div class="mb-3">
+      <label for="pass" class="form-label">Password</label>
+      <input type="password" class="form-control" id="pass" name="password" ngModel #passwordRef="ngModel"
+        minlength="8" maxlength="25" required
+        pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$" 
+        >
+        @if(passwordRef.touched && passwordRef.invalid){
+          <div id="emailHelp" class="form-text text-danger">
+            @if (passwordRef.errors?.["required"]) {
+            <div>this vaild is required</div>
+            } @if(passwordRef.errors?.["minlength"] ) {
+            <div> Password is short </div>
+            }@else if( passwordRef.errors?.["pattern"]) {
+            <div>Plz! Enter Valid Password</div>
+            }
+          </div>
+          }
+    </div>
+
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Remember me</label>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
+  </form>
+</div>
+
+
+<div class="dont-have_account text-center mt-5">
+  <span>Don't have account !
+    <a routerLink="/register">Register</a>
+
+  </span>
+
+
+
+</div>

@@ -1,0 +1,5 @@
+@media (min-width:900px) {
+    .container-width{
+        width: 50% !important;
+    }
+}
