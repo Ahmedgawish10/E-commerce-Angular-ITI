@@ -1,0 +1,29 @@
+.loading{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+/* media */
+  @media screen and (min-width:900px) {
+    .products{
+      display: block;
+      width: 90% !important;
+      margin: auto;
+      
+    }
+  }

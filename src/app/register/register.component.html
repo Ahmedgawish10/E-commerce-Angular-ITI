@@ -1,65 +1,49 @@
  <div class="container container-width mt-5">
-    <form [formGroup]="loginForm" (ngSubmit)="handleRegisterSubmit()">
-        <div class="mb-3">
+    <form [formGroup]="registerForm" (ngSubmit)="handleRegisterSubmit()">
+        <div class="mb-3 box-name">
           <label for="username" class="form-label">Name</label>
-          <input type="text" class="form-control" id="name" aria-describedby="usermsg" formControlName="loginName">
-          @if(loginForm.controls["loginName"].touched && loginForm.controls["loginName"]){
+          <input type="text" class="form-control" id="name" aria-describedby="usermsg" formControlName="registerName">
+          @if(registerForm.controls["registerName"].touched && registerForm.controls["registerName"]){
             <div id="name" class="form-text text-danger">
-              @if (loginForm.controls["loginName"].errors?.["required"]) {
-              <div>this field is required</div>
-              } @if(loginForm.controls["loginName"].errors?.["minlength"] ) {
-              <div> Password is short </div>
-              }@else if( loginForm.controls["loginName"].errors?.["pattern"]) {
-              <div>Plz! Enter Valid Password</div>
+              @if (registerForm.controls["registerName"].errors?.["required"]) {
+              <div class="">this name is required</div>
+              } @if(registerForm.controls["registerName"].errors?.["minlength"] ) {
+              <div> name is short </div>
+              }@else if( registerForm.controls["registerName"].errors?.["pattern"]) {
+              <div>enter valid name</div>
               }
             </div>
             }
         </div>
-        <div class="mb-3">
+        <div class="mb-3 box-email">
             <label for="InputEmail1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp"formControlName="loginEmail" >
-            @if(loginForm.controls["loginEmail"].touched && loginForm.controls["loginEmail"]){
+            <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp"formControlName="registerEmail" >
+            @if(registerForm.controls["registerEmail"].touched && registerForm.controls["registerEmail"]){
               <div id="emailHelp" class="form-text text-danger">
-                @if (loginForm.controls["loginEmail"].errors?.["required"]) {
-                <div>email is required</div>
-                } @if(loginForm.controls["loginEmail"].errors?.["minlength"] ) {
+                @if (registerForm.controls["registerEmail"].errors?.["required"]) {
+                <div>the email is required</div>
+                } @if(registerForm.controls["registerEmail"].errors?.["minlength"] ) {
                 <div> email is not valid </div>
-                }@else if (loginForm.controls["loginEmail"].errors?.["maxlength"]) {
-                  <div>this email is long and not valid</div>
-                } @else if( loginForm.controls["loginEmail"].errors?.["pattern"]) {
-                <div>Plz! enter valid password</div>
+                }@else if (registerForm.controls["registerEmail"].errors?.["maxlength"]) {
+                  <div> email is long and not valid</div>
+                } @else if( registerForm.controls["registerEmail"].errors?.["pattern"]) {
+                <div>enter valid email</div>
                 }
               </div>
               }
   
           </div>
-          <div class="mb-3">
-            <label for="username" class="form-label">UserName</label>
-            <input type="text" class="form-control" id="username" aria-describedby="username" formControlName="loginUsername">
-            @if(loginForm.controls["loginUsername"].touched && loginForm.controls["loginUsername"]){
-              <div id="username" class="form-text text-danger">
-                @if (loginForm.controls["loginUsername"].errors?.["required"]) {
-                <div>this field required</div>
-                } @if(loginForm.controls["loginUsername"].errors?.["minlength"] ) {
-                <div> username is so short ! </div>
-                } @else if( loginForm.controls["loginUsername"].errors?.["pattern"]) {
-                <div>Plz! enter valid username</div>
-                }
-              </div>
-              }
-          </div>
-
-        <div class="mb-3">
+        <div class="mb-3 box-password">
           <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" formControlName="loginPassword" (keyup)="PasswordMatch()">
-          @if(loginForm.controls["loginPassword"].touched && loginForm.controls["loginUsername"]){
+          <input type="password" class="form-control" id="exampleInputPassword1" formControlName="registerPassword" (keyup)="PasswordMatch()">
+          @if(registerForm.controls["registerPassword"].touched && registerForm.controls["registerPassword"]){
             <div id="password" class="form-text text-danger">
-              @if (loginForm.controls["loginPassword"].errors?.["required"]) {
-              <div>this field required</div>
-              } @if(loginForm.controls["loginPassword"].errors?.["minlength"] ) {
-              <div> password is so weak ! </div>
-              } @else if( loginForm.controls["loginPassword"].errors?.["pattern"]) {
-              <div>Plz! password must contain 1 character and 1 digit number and 1 special character at least </div>
+              @if (registerForm.controls["registerPassword"].errors?.["required"]) {
+              <div>the password is required</div>
+              } @if(registerForm.controls["registerPassword"].errors?.["minlength"] ) {
+              <div  class="text-danger">  password is so weak ! </div>
+              } @else if( registerForm.controls["registerPassword"].errors?.["pattern"]) {
+              <div  class="text-danger">password must contain 1 character and 1 digit number and 1 special character at least </div>
               }
             </div>
             }
@@ -67,22 +51,22 @@
 
         </div>
 
-        <div class="mb-3">
+        <div class="mb-3 box-confirm">
             <label for="confirmpassword" class="form-label">Confirm Password</label>
-            <input type="password" class="form-control" id="confirmpassword" formControlName="loginConfirmPassword"
+            <input type="password" class="form-control" id="confirmpassword" formControlName="registerConfirmPassword"
              (keyup)="confirmPasswordMatch()">
             <div>
-              @if (loginForm.controls["loginConfirmPassword"].touched && !(idinticalpass) ) {
-                <div class="text-danger">confirmpassword not idintical with password {{idinticalpass}}</div>
+              @if (registerForm.controls["registerConfirmPassword"].touched && !(idinticalpass) ) {
+                <div class="text-danger">confirm password not idintical with password {{idinticalpass}}</div>
                 }
             </div>
           </div>
 
-        <div class="mb-3 form-check">
+        <div class="mb-3 form-check box-terms">
           <input type="checkbox" class="form-check-input" id="exampleCheck1">
           <label class="form-check-label" for="exampleCheck1">confirm terms</label>
         </div>
-        <button type="submit" class="btn btn-primary">Register</button>
+        <button type="submit" class="btn btn-primary ">Register</button>
       </form>
 </div>
 <div class="have-account text-center mt-5 mb-5">

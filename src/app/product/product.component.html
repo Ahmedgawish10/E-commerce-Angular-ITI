@@ -1,8 +1,12 @@
-<div class="products  d-flex gap-4 flex-wrap justify-content-center mb-5" >
+<div *ngIf="loading" class="text-center mt-2 loading"><h2>waiting plz 🚀...</h2> </div>
+
+<div class="products  d-flex gap-4 flex-wrap justify-content-center mb-5">
+
     @for (product of productList; track $index) {
-        <app-single-product [producti]="product" ></app-single-product >
-        
-        }
+
+    <app-single-product [producti]="product" class='fade-in'></app-single-product>
+
+    }
 
 
 </div>

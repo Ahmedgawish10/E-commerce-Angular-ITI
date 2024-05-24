@@ -5,3 +5,21 @@
 .coursor-none{
     cursor: default !important;
 }
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .fade-in {
+    animation: fadeIn 0.5s ease-in;
+  }
+  @media screen and (min-width:992px) {
+    .desc{
+      display: block;
+      width: 70% !important;
+    }
+  }

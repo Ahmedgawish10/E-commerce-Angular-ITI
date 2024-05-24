@@ -1,25 +1,27 @@
-<p  class="text-danger text-center mt-5">{{cartEmpty}}</p>
-@if (!cartEmpty  ) {
+<div class="text-danger text-center mt-5" *ngIf="!countCart">
+<h2>  cart is empty 😊!</h2>
+<div><a routerLink="/"><button type="button" class="btn btn-dark mt-4">🚀 Back to home</button></a></div>
+</div>
 
 
-    <div class="title-box  border-bottom border-mutted  container">
+
+    <div   *ngIf="countCart" class="title-box  border-bottom border-mutted  container mt-5">
         <div class=" fs-6 fw-bold">description</div>
         <div class="text-center fs-6 fw-bold">Quntnity</div>
         <div class="text-center fs-6 fw-bold">Remove</div>
         <div class="text-center fs-6 fw-bold">Price</div>
        </div>
-}
 
+       <div class="all">
 <div *ngFor="let item of arrProducts">
 <div class="container">
-     
-       <div class="cart-contnet p-2  gap-3 border-bottom border-mutted">
-          <div class="box1 d-flex align-items-center">
+       <div class="cart-contnet p-2  gap-3 border-bottom border-mutted" [class.fade-in]="removeSmoth">
+          <div class="box1 d-flex align-items-center " >
             <div class="img-box ">
-                <img src={{item.images[0]}} alt="" width="80px" height="80px">
+                <img src={{item.product.images[0]}} alt="" width="80px" height="80px">
             </div>
             <div class="category ms-1">
-                <div>{{item.category}}</div>
+                <div>{{item.product.category}}</div>
             </div>
 
           </div>
@@ -27,16 +29,16 @@
           <div class="numbder-cart mt-4 d-flex justify-content-center">
             <nav aria-label="Page navigation example ">
                 <ul class="pagination">
-                  <li class="page-item"><div class="page-link">-</div></li>
-                  <li class="page-item"><div class="page-link coursor-none">1</div></li>
-                  <li class="page-item"><div class="page-link">+</div></li>
+                  <li class="page-item"><div class="page-link"(click)="decreaseQuantity(item.product.id)" style="cursor: pointer;">-</div></li>
+                  <li class="page-item"><div class="page-link coursor-none">{{item.quantity}}</div></li>
+                  <li class="page-item"><div class="page-link" (click)="increaseQuantity(item.product.id)" style="cursor: pointer;">+</div></li>
                 </ul>
               
               </nav>
           </div>
           <!-- 3 -->
           <div class="box1 d-flex align-items-center justify-content-center"> 
-            <div class="category ms-2 border rounded pt-2 pb-2  ps-3 pe-3  "(click)="deleteSelecteProduct(item.id)">
+            <div class="category ms-2 border rounded pt-2 pb-2  ps-3 pe-3  "(click)="deleteSelecteProduct(item.product.id)" style="cursor: pointer;">
                 x
             </div>
 
@@ -44,7 +46,7 @@
           <!-- 4 -->
           <div class="box1 d-flex align-items-center justify-content-center"> 
             <div class="category ms-2 ">
-                ${{item.price}}.00
+                ${{item.product.price}}.00
             </div>
 
           </div>
@@ -56,5 +58,11 @@
 </div>
     
 
+</div>
+
+<div class="checkout container d-flex justify-content-center" *ngIf="countCart"><div><a routerLink="/"><button type="button" class="btn btn-dark mt-4">Checkout</button></a></div>
 
 </div>
+</div>
+
+

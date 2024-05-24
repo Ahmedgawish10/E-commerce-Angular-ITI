@@ -6,3 +6,24 @@ grid-template-columns: repeat(4,1fr);
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
+.all{
+    overflow-y: auto;
+    height: 420px;
+}
+a{
+    text-decoration: none;
+    
+}
+
+@keyframes fadeIn {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  
+  .fade-in {
+    animation: fadeIn 0.5s ease-in;
+  }

@@ -1,49 +1,97 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { Product } from '../interface/product';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-  private products=new  BehaviorSubject<any>([]);
+  public count=new  BehaviorSubject<any>(0);
+  public Loggedout=new  BehaviorSubject<any>(false);
+  public x=new  BehaviorSubject<any>(1);
 
-  constructor() { }
+   //gets the all products that added to cart from localstorage everyonce the user refresh the page!
+  constructor(private toast:ToastrService) { 
+    this.loadIProductsLocalStorage(); 
+                                     
+ 
+          
+    
+    if(localStorage.getItem("currentUser")){
+this.x.next(1)
+console.log("mmm");
+                 
+    }
+      }
 
-  getproducts(){
-   // console.log(this.arrProducts);
-    return this.products.asObservable()
-    console.log(this.arrProducts)
-
+// add products to cart and save it in localstorage!
+  private items: any[] = [];
+  addToCart(product: Product): void {
+    const existingProduct = this.items.find(item => item.product.id === product.id);
+    if (existingProduct) {
+      existingProduct.quantity++;
+      this.toast.info('Product is already in cart');
+    } else {
+      this.items.push({ product, quantity: 1 });  
+      this.count.next(this.items.length)
+      this.toast.success('Product add to cart');
+     // localStorage.setItem("countCart", this.count.value.toString())
+    }
+    this.saveProductsToLocalStorage();
   }
-
-
-  arrProducts:any=[];
-  addProduct(product:any){
-   this.arrProducts.push(product)
-    this.products.next( this.arrProducts)        
-  // console.log(product.id)
+//get the current prodcuts that added to cart and updated the count of cart!
+  getItems() {
+    this.count.next(this.items.length)    
+    return this.items;
   }
+  //save the selected product to the cart and localstorage!
+  private saveProductsToLocalStorage(): void {    
+    localStorage.setItem("allProducts", JSON.stringify(this.items));
+  }
+  // get the prodcuts that added to cart from localstorge for everyonce the user refresh the page!
+  private loadIProductsLocalStorage(): void {
+    const savedItems = localStorage.getItem("allProducts");
+    if (savedItems) {
+    return  this.items = JSON.parse(savedItems);
+    }
+  }
+  //remove the selected product from the cart and localstorage!
+  removeFromCart(productId: any): void {
+    this.items = this.items.filter((item,i) =>{           
+    return  item.product.id !== productId    
+    }); 
+    this.saveProductsToLocalStorage()
+    this.count.next(this.items.length)
+    this.toast.warning('Product deleted from cart');
+  }
+  //icrease the amount of selected product! 
+  increaseQuantity(productId: number): void {
+    const existingItem = this.items.find(item => item.product.id === productId);
+    if (existingItem) {
+      existingItem.quantity++;
+      this.saveProductsToLocalStorage();
+    }
+  }
+  //decrease the amount of selected product!  
+  decreaseQuantity(productId: any): void {
+    const existingItem = this.items.find(item => item.product.id === productId);
+    if (existingItem && existingItem.quantity > 1) {
+      existingItem.quantity--;
+      this.saveProductsToLocalStorage();
+    }
+  }
+// logout
+// logout(){
+//   localStorage.clear()
+//   this.Loggedout.next(true)
+//   return this.Loggedout.value
+// }
 
-deleteProduct(id:any){
-  this.arrProducts = this.arrProducts.filter((product:any )=> product.id !== id);
-  this.products.next( this.arrProducts)      
 
-}
 
-  // addToCartAndCheck(product: any) {
-  //   const currentValue = this.products.value;
-  //   // Check if the product already exists in the cart
-  //   const isProductExist = currentValue.fil((item:any) => item.id === product.id);
-  //   if (!isProductExist) {
-  //     // If the product does not exist, add it to the cart
-  //     const updatedValue = [...currentValue, product];
-  //     this.products.next(updatedValue);
-  //     console.log(updatedValue);
-  //   } else {
-  //     // If the product already exists, do not add it again
-  //     console.log("Product already exists in the cart.");
-  //   }
-  // }
+
+
 
 
 

@@ -1,11 +1,14 @@
 <div class="selected-product container mt-5 mb-5">
 
-    <div class="box-product">
+    <div class="box-product fade-in">
         <div class="product-name fs-1 fw-bold">
             {{productDetails?.title}}
         </div>
         <div class="product-desc border-bottom pb-3">
-            <span class="text-muted"> {{productDetails?.description}}</span>
+            <div class="image">
+                <!-- <img [src]="productDetails?.images[0]" alt=""  width="300px" height="200px"> -->
+            </div>
+            <span class="text-muted desc"> {{productDetails?.description}}</span>
             <div class="rating-high fs-1 text-success">@if (productDetails?.rating.toFixed()>="5") {
                 &#8270;    &#8270;    &#8270;    &#8270;    &#8270;
                 }@else {
@@ -23,26 +26,25 @@
             @if (productDetails?.stock) {
                 <div><button type="button" class="btn btn-success rounded-pill pe-4 ps-4 pt-0 pb-0 mb-3 mt-3">in stock</button></div>
                 <h6 >More Information</h6>
-                <button type="button" class="btn btn-secondary rounded-pill pe-4 ps-4 pt-2 pb-2  mt-1">Category</button>
-                <button type="button" class="btn btn-secondary rounded-pill pe-5 ps-5 pt-2 pb-2 ms-3 mt-1">Brand</button>
+                <button type="button" class="btn btn-secondary rounded-pill pe-4 ps-4 pt-2 pb-2  mt-1">Category- {{productDetails?.category}}</button>
+                <button type="button" class="btn btn-secondary rounded-pill pe-5 ps-5 pt-2 pb-2 ms-3 mt-1">Brand - {{productDetails?.brand}}</button>
             }@else{
                 <button type="button" class="btn btn-danger">out of stock</button>
             }
           </div>
-          <div class="numbder-cart mt-4 d-flex">
+          <!-- <div class="numbder-cart mt-4 d-flex ">
             <nav aria-label="Page navigation example ">
                 <ul class="pagination">
-                  <li class="page-item"><div class="page-link">-</div></li>
-                  <li class="page-item"><div class="page-link coursor-none">2</div></li>
-                  <li class="page-item"><div class="page-link">+</div></li>
+                  <li class="page-item"><div class="page-link"(click)="decreaseQuantity(productDetails.id)" style="cursor: pointer;">-</div></li>
+                  <li class="page-item"><div class="page-link coursor-none">{{1}}</div></li>
+                  <li class="page-item"><div class="page-link" (click)="increaseQuantity(productDetails.id)" style="cursor: pointer;">+</div></li>
                 </ul>
               
               </nav>
-              <div class="ms-4">only <span class="text-warning">12 items left</span> <br> Dont miss it</div>
-          </div>
+          </div> -->
           <div class="stock-section  border-bottom pb-4">
-                <button type="button" class="btn btn-dark rounded-pill pe-5 ps-5 pt-2 pb-2 ms-3 mt-1">Buy Now</button>
-                <button type="button" class="btn btn-outline-dark rounded-pill pe-5 ps-5 pt-2 pb-2 ms-3 mt-1">Add to Cart</button>
+                <button type="button" class="btn btn-dark rounded-pill pe-5 ps-5 pt-2 pb-2 ms-3 mt-2">Buy Now</button>
+                <button type="button" class="btn btn-outline-dark rounded-pill pe-5 ps-5 pt-2 pb-2 ms-3 mt-2" (click)="addToCart(productDetails)">Add to Cart</button>
             
            
           </div>

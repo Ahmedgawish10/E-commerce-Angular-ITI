@@ -2,14 +2,27 @@
 
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid" >
-          <a  routerLink="/" class="navbar-brand" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Ecommerce App</a>
-          <div>
-            <a routerLink="register" class="navbar-brand" routerLinkActive="active">Register</a>
-            <a  routerLink="login" class="navbar-brand" routerLinkActive="active">Login</a>
-
-            <a  routerLink="/cart" class="navbar-brand position-relative" routerLinkActive="active">
+          <div class="logo  header_left">
+            <a  routerLink="/" class="navbar-brand" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Ecommerce App</a>
+          </div>
+          <div class="d-flex header_right">
+            <div class="user d-flex" *ngIf="isAuthenticated; else notLoggedIn">
+              <a routerLink="register" class="navbar-brand user-info" routerLinkActive="active">
+                <img src="../../assets/user-icon.png" alt="" srcset="">
+                {{_AuthService.nameOfUser}}
+              </a>  
+              <a routerLink="/" class="navbar-brand user-info" routerLinkActive="active"  (click)="_AuthService.logout()">
+                🏃 logout 
+              </a> 
+            </div>
+            <ng-template #notLoggedIn >
+              <a routerLink="register" class="navbar-brand user-info" routerLinkActive="active" >Register</a>
+              <a  routerLink="login" class="navbar-brand user-info" routerLinkActive="active" >Login</a>
+            </ng-template>
+       
+            <a  routerLink="/cart" class="navbar-brand position-relative  user-info" routerLinkActive="active">
               <img src="../../assets/add-cart.ico" width="30px" alt="">
-              <span class="count-cart text-danger ">{{countCart}}</span>
+              <span class="count-cart text-danger  ">{{countCart}}</span>
             </a>
 
           </div>
