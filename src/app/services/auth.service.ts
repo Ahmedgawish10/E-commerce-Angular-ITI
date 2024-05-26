@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject } from 'rxjs';
+import { CartService } from './cart.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,7 @@ export class AuthService {
   private users: {}[] = [];
   public nameOfUser:any;
 
-  constructor(private router: Router, private toastr: ToastrService) {
+  constructor(private router: Router, private toastr: ToastrService,private _CartService:CartService) {
     const storedUsers = localStorage.getItem('users');
     if (storedUsers) {
       this.users = JSON.parse(storedUsers);
@@ -114,8 +115,15 @@ export class AuthService {
     localStorage.removeItem('isAuthenticated');
     localStorage.removeItem('currentUser');
     localStorage.removeItem('users');
-
+    localStorage.removeItem('allProducts');
     this.router.navigate(['/']);
+// ++++++++++++++++++++++++++++
+this._CartService.count.next(0)
+const emptyCart=this._CartService.items=[];
+localStorage.setItem("allProducts",JSON.stringify(emptyCart))
+
+
+
   }
 // fuction auth is user is logged or not
   isLoggedIn(): boolean {

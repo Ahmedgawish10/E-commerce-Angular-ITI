@@ -1,9 +1,23 @@
-<div class="header_section position-sticky top-0 w-100 z-1">
+<div class="popup_logged  " *ngIf="popup"> 
+  <div class="popup" id="popup" >
+  <div class="popup-content text-center fade-out">
+      <span class="close mb-3" id="closePopup" (click)="isLoggedPopup()" >&times;</span>
+      <h2 class="text-center"><i class="bx bx-heart" style="font-size: 60px;color:red "></i ></h2>
+      <h2 class="text-center mb-4 mt-4">Oops</h2>
+      <p class="text-center ">By logging out, you will lose any products in your cart! ! </p>
+      <button type="button" class="btn btn-dark" routerLink="/login" (click)="isLoggedPopup();logout()"> Agree  </button>
 
+  </div>
+</div>
+</div>
+
+
+
+<div class="header_section position-sticky top-0 w-100 z-1">
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid" >
           <div class="logo  header_left">
-            <a  routerLink="/" class="navbar-brand" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Ecommerce App</a>
+            <a  routerLink="/" class="navbar-brand" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >Ecommerce App</a>
           </div>
           <div class="d-flex header_right">
             <div class="user d-flex" *ngIf="isAuthenticated; else notLoggedIn">
@@ -11,7 +25,7 @@
                 <img src="../../assets/user-icon.png" alt="" srcset="">
                 {{_AuthService.nameOfUser}}
               </a>  
-              <a routerLink="/" class="navbar-brand user-info" routerLinkActive="active"  (click)="_AuthService.logout()">
+              <a routerLink="/" class="navbar-brand user-info" routerLinkActive="active" (click)="isLoggedPopup()" >
                 🏃 logout 
               </a> 
             </div>

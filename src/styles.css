@@ -1,4 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 body{
-    font-family: cursive !important;
+    font-family: revert-layer !important;
 }
+        .toast-top-right{
+            top: 60px !important;
+
+        }
+
+
+        @media screen and (max-width:500px){
+            .popup-content{
+                width: 93% !important;
+            }
+            
+        }
+        @media screen and (max-width:650px){
+            .popup-content{
+                width: 63%;
+            }
+            
+        }

@@ -20,17 +20,10 @@ export class SingleProductComponent {
 @Input() producti! : Product;
 products:any;
 e:any
-  popup: any;
+popup: any;
 constructor(private router:Router,private _CartService: CartService,private _AuthService:AuthService){}
 
-ngOnInit(){
-
-// console.log(this._AuthService.isLoggedIn()
-//   );
-// this.e=this._AuthService.isLoggedIn()
-// console.log(this.e);
-
-}
+ngOnInit(){}
 redirectProductOfId(id:number){  
 this.router.navigate([`/private-product`, id]);
 }

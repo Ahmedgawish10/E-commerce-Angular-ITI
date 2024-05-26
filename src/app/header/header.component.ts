@@ -3,6 +3,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CartService } from '../services/cart.service';
 import { CommonModule, NgIf } from '@angular/common';
 import { AuthService } from '../services/auth.service';
+import "./header.component.css"
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -15,6 +16,7 @@ export class HeaderComponent {
   currntUser:any;
   isAuthenticated = false;
   isLoggedin=false;
+  popup: any;
   constructor(private _CartService: CartService,public _AuthService:AuthService ) {
 }
   ngOnInit() { 
@@ -35,6 +37,25 @@ export class HeaderComponent {
 
   }
 
+  logout(){
+    this._AuthService.logout()
+  
+  }
+  isLoggedPopup(){
+    console.log(this._AuthService.isLoggedIn());
+    
+  
+      if (this.popup==false) {
+        this.popup=!this.popup;
+      }else{
+        this.popup=!this.popup;
+      }
+    
+   
+    
+    
+  }
+  
 
 
 

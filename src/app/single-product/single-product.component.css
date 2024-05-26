@@ -78,3 +78,18 @@ body {
     color: white;
 
 }
+
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  @keyframes fadeIn {
+      from {
+        top: -1px;
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+        top: 50%;
+      }
+    }

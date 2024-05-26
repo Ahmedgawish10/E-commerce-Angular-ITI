@@ -8,8 +8,6 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class CartService {
   public count=new  BehaviorSubject<any>(0);
-  public Loggedout=new  BehaviorSubject<any>(false);
-  public x=new  BehaviorSubject<any>(1);
 
    //gets the all products that added to cart from localstorage everyonce the user refresh the page!
   constructor(private toast:ToastrService) { 
@@ -19,14 +17,16 @@ export class CartService {
           
     
     if(localStorage.getItem("currentUser")){
-this.x.next(1)
-console.log("mmm");
-                 
+
+    }else{
+      console.log(22);
+       
+      
     }
       }
 
 // add products to cart and save it in localstorage!
-  private items: any[] = [];
+  public items: any[] = [];
   addToCart(product: Product): void {
     const existingProduct = this.items.find(item => item.product.id === product.id);
     if (existingProduct) {
@@ -35,7 +35,9 @@ console.log("mmm");
     } else {
       this.items.push({ product, quantity: 1 });  
       this.count.next(this.items.length)
-      this.toast.success('Product add to cart');
+      this.toast.success('Product added to cart', '', {
+        positionClass: 'toast-top-right',
+      });
      // localStorage.setItem("countCart", this.count.value.toString())
     }
     this.saveProductsToLocalStorage();
