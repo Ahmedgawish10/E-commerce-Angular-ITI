@@ -20,7 +20,5 @@ Data Handling: Local Storage, REST API<br>
 ---
 1-Clone the repository<br>
 2-Navigate to the project directory<br>
-3-Install dependencies <br>
-**npm install<br>
+3-Install All dependencies<br>
 4-Run the application<br>
- - **ng serve -o
