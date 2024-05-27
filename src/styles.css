@@ -12,6 +12,10 @@ body{
             .popup-content{
                 width: 93% !important;
             }
+            .toast-top-right{
+                top: 90px !important;
+    
+            }
             
         }
         @media screen and (max-width:650px){

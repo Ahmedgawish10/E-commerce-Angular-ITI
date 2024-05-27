@@ -78,3 +78,10 @@
         top: 50%;
       }
     }
+    /* media */
+    @media screen and (max-width:420px) {
+        .logo{
+            margin-bottom: 14px;
+        }
+        
+    }

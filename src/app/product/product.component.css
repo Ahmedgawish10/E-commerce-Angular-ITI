@@ -81,3 +81,14 @@
       top: 50%;
     }
   }
+
+  /* media */
+  @media screen and (max-width:500px) {
+    .products{
+      display: grid !important;
+    grid-template-columns: 1fr ;
+    gap: 10px;
+    width: 90%;
+    margin: auto;
+    }
+  }
