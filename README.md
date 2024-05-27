@@ -8,7 +8,6 @@ and implements lazy loading for optimized performance.<br>
 ● Product Management: Fetch products from an API and store them in local storage for quick access.<br>
 ● Error Handling: Display error messages using Toastr notifications for a better user experience.<br>
 ● Lazy Loading: Implement lazy loading to improve application performance and reduce initial load time.<br> 
-● Lazy Loading: Implement lazy loading to improve application performance and reduce initial load time.<br> 
 ● Local Storage: Save user data and cart information in local storage to maintain state across sessions.
 
 🚀 Technologies Used
