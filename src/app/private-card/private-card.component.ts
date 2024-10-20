@@ -1,5 +1,7 @@
 import { Component ,Input} from '@angular/core';
 import { Product } from "../interface/product";
+import { Router, RouterLink } from '@angular/router';
+
 import { ActivatedRoute } from '@angular/router';
 import { ApiProductsService } from '../services/api-products.service';
 import { NgFor } from '@angular/common';
@@ -12,7 +14,7 @@ import "./private-card.component.css"
 @Component({
   selector: 'app-private-card',
   standalone: true,
-  imports: [NgFor,FormsModule,NgIf],
+  imports: [NgFor,FormsModule,NgIf,RouterLink],
   templateUrl: './private-card.component.html',
   styleUrl: './private-card.component.css'
 })

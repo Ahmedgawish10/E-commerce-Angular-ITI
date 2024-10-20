@@ -1,3 +1,22 @@
+<div class="popup_logged  " *ngIf="popup"> 
+    <div class="popup" id="popup" >
+    <div class="popup-content text-center fade-in">
+        <span class="close mb-3" id="closePopup" (click)="isLoggedPopup()" >&times;</span>
+        <h2 class="text-center"><i class="bx bx-heart" style="font-size: 60px;color:red "></i ></h2>
+        <h2 class="text-center mb-4 mt-4">It seems that you like this product</h2>
+        <p class="text-center ">By registering on Furniro, you will be able to save 
+          products as favorite so you can easily 
+          find them later.if you are registered,log in!</p>
+        <button type="button" class="btn btn-dark" routerLink="/login">Log in</button>
+  
+    </div>
+  </div>
+  </div>
+
+
+
+
+
 <div class="selected-product container mt-5 mb-5">
 
     <div class="box-product fade-in">
@@ -43,8 +62,8 @@
               </nav>
           </div> -->
           <div class="stock-section  border-bottom pb-4">
-                <button type="button" class="btn btn-dark rounded-pill pe-5 ps-5 pt-2 pb-2 ms-3 mt-2">Buy Now</button>
-                <button type="button" class="btn btn-outline-dark rounded-pill pe-5 ps-5 pt-2 pb-2 ms-3 mt-2" (click)="addToCart(productDetails)">Add to Cart</button>
+                <button type="button" class="btn btn-dark rounded-pill pe-5 ps-5 pt-2 pb-2 ms-3 mt-2" (click)="addToCart(productDetails);isLoggedPopup()" >Buy Now</button>
+                <button type="button" class="btn btn-outline-dark rounded-pill pe-5 ps-5 pt-2 pb-2 ms-3 mt-2" (click)="addToCart(productDetails);isLoggedPopup()">Add to Cart</button>
             
            
           </div>
